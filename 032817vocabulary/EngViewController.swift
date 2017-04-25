@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class EngViewController: UIViewController {
 
@@ -17,6 +18,24 @@ class EngViewController: UIViewController {
     var index = 0
     var array:[String] = []
     var is_Eng = true
+    
+    @IBAction func EngSpeak(_ sender: Any) {
+        
+        let utterance = AVSpeechUtterance(string: label_sentence.text!)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        let synth = AVSpeechSynthesizer()
+        synth.speak(utterance)
+        
+    }
+    
+    @IBAction func ChinSpeak(_ sender: Any) {
+        
+        let utterance = AVSpeechUtterance(string: label_sentence.text!)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-tw")
+        let synth = AVSpeechSynthesizer()
+        synth.speak(utterance)
+        
+    }
     
     
     @IBAction func preBtn(_ sender: Any) {
@@ -38,6 +57,19 @@ class EngViewController: UIViewController {
             label_vocabulary.text = data[1]
             label_sentence.text = data[3]
         }
+        
+        label_vocabulary.alpha = 0
+        label_sentence.alpha = 0
+        
+        let point = label_vocabulary.center
+        label_vocabulary.center = CGPoint(x: -100, y: label_vocabulary.center.y)
+        
+        UIView.animate(withDuration: 1) {
+            self.label_vocabulary.alpha = 1
+            self.label_sentence.alpha = 1
+            self.label_vocabulary.center = point
+        }
+        
     }
     
     
@@ -60,6 +92,17 @@ class EngViewController: UIViewController {
         else{
             label_vocabulary.text = data[1]
             label_sentence.text = data[3]
+        }
+        
+        label_vocabulary.alpha = 0
+        label_sentence.alpha = 0
+        let point = label_vocabulary.center
+        label_vocabulary.center = CGPoint(x: -100, y: label_vocabulary.center.y)
+        
+        UIView.animate(withDuration: 1) {
+            self.label_vocabulary.alpha = 1
+            self.label_sentence.alpha = 1
+            self.label_vocabulary.center = point
         }
         
     }

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -375,11 +376,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="English" id="0Du-BZ-K5H">
-                        <barButtonItem key="rightBarButtonItem" title="Chinese" id="KcR-Ef-DED">
-                            <connections>
-                                <segue destination="86L-r9-lh9" kind="presentation" modalTransitionStyle="flipHorizontal" id="yPk-bh-TIJ"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Chinese" id="KcR-Ef-DED">
+                                <connections>
+                                    <segue destination="86L-r9-lh9" kind="presentation" modalTransitionStyle="flipHorizontal" id="yPk-bh-TIJ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Speak" id="ecs-7a-MJr">
+                                <connections>
+                                    <action selector="EngSpeak:" destination="arm-Hm-eoc" id="aVB-IF-d6o"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="label_sentence" destination="C0b-VQ-3NF" id="eMd-5y-zT0"/>
@@ -452,11 +460,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="中文" id="Dia-GO-KMN">
-                        <barButtonItem key="rightBarButtonItem" title="英文" id="6Sy-Hi-05y">
-                            <connections>
-                                <action selector="backToEng:" destination="SFu-Ku-CtI" id="J9H-Nf-OYI"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="英文" id="6Sy-Hi-05y">
+                                <connections>
+                                    <action selector="backToEng:" destination="SFu-Ku-CtI" id="J9H-Nf-OYI"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="發音" id="DUL-nl-sgb">
+                                <connections>
+                                    <action selector="ChinSpeak:" destination="SFu-Ku-CtI" id="Gls-2o-Evv"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="label_sentence" destination="ukG-Qg-6wY" id="5Ca-cG-CAM"/>
@@ -498,6 +513,6 @@
         <image name="prev" width="101" height="101"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zYn-O7-oev"/>
+        <segue reference="Gcj-sn-GMq"/>
     </inferredMetricsTieBreakers>
 </document>
